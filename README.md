@@ -4,5 +4,6 @@ This tool check certificate file in the wiled.
 
 ```sh
 $ go get -u https://github.com/famasoon/downloadPEM
-$ downloadPEM -url example.com
+$ downlaodPEM -domain <domain>
+$ downloadPEM -domain example.com
 ```
