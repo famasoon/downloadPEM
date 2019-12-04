@@ -10,7 +10,7 @@ import (
 )
 
 func showUsage() {
-	fmt.Printf("%s -url <url>")
+	fmt.Printf("%s -domain <domain>", os.Args[0])
 	os.Exit(0)
 }
 
@@ -32,8 +32,9 @@ func enumDNS(cert *x509.Certificate) {
 
 func showCertInfo(cert *x509.Certificate) {
 	inJPTime := cert.NotAfter.In(time.FixedZone("Asia/Tokyo", 9*60*60))
-	fmt.Printf("%d\n", cert.Version)
-	fmt.Printf("%s\n", inJPTime.Format("2006/01/02 15:04"))
+	fmt.Printf("CertVersion: %d\n", cert.Version)
+	fmt.Printf("Cert Deadline: %s\n", inJPTime.Format("2006/01/02 15:04"))
+	fmt.Println("Enumerate related DNS records in Certificate:")
 	enumDNS(cert)
 }
 
